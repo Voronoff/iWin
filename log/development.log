@@ -1,0 +1,1631 @@
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (15.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (2.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100204081834)
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime) [0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100204081834')[0m
+Migrating to CreateMainpages (20100206081544)
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCREATE TABLE "mainpages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100206081544')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("mainpages")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 01:14:28) [GET]
+
+NameError (uninitialized constant MainpageController):
+  
+
+Rendered rescues/_trace (133.6ms)
+Rendered rescues/_request_and_response (29.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 01:15:04) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:104: syntax error, unexpected kEND, expecting $end):
+  
+
+Rendered rescues/_trace (72.3ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:17:05) [GET]
+
+ActionController::UnknownAction (No action responded to main. Actions: create, destroy, edit, home, index, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:17:30) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+Completed in 266ms (View: 27, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:24:48) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+Completed in 29ms (View: 19, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-06 01:24:51) [GET]
+Rendering sessions/new
+Completed in 32ms (View: 26, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-02-06 01:24:54) [GET]
+Rendering users/new
+Completed in 244ms (View: 64, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-06 01:25:03) [GET]
+Rendering sessions/new
+Completed in 16ms (View: 7, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-02-06 01:25:06) [GET]
+Rendering users/new
+Completed in 38ms (View: 11, DB: 0) | 200 OK [http://localhost/signup]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-02-06 01:25:30) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"1234", "password"=>"1234", "login"=>"david", "email"=>"test@example.com"}, "commit"=>"Sign up", "authenticity_token"=>"2Xvm8lboStcW025Bl/KSLnO1CJAzlJufPvV8TntLzac="}
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com') LIMIT 1[0m
+Rendering users/new
+Completed in 223ms (View: 18, DB: 1) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-02-06 01:25:41) [POST]
+  Parameters: {"user"=>{"password_confirmation"=>"123456", "password"=>"123456", "login"=>"david", "email"=>"test@example.com"}, "commit"=>"Sign up", "authenticity_token"=>"2Xvm8lboStcW025Bl/KSLnO1CJAzlJufPvV8TntLzac="}
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com') LIMIT 1[0m
+  [4;36;1mUser Create (1.9ms)[0m   [0;1mINSERT INTO "users" ("name", "salt", "updated_at", "crypted_password", "remember_token_expires_at", "remember_token", "login", "email", "created_at") VALUES('', '9fa22eadb3e7fec2956a7f86777e2186aa5f6abf', '2010-02-06 09:25:42', '70e12d5dc302e3d7d2008bbaeabbdcd0ed8d57db', NULL, NULL, 'david', 'test@example.com', '2010-02-06 09:25:42')[0m
+Redirected to http://localhost:3000/
+Completed in 276ms (DB: 3) | 302 Found [http://localhost/users]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:25:42) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x2534e48>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (80.2ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:26:00) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x2450978>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (80.9ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:26:01) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x233eb34>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (85.7ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:26:02) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x25eeca8>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (103.6ms)
+Rendered rescues/_request_and_response (4.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:26:05) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x24d658c>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (99.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:28:54) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x24018dc>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (317.8ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:28:55) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x25fda00>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (101.9ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:28:58) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x24e3e58>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (196.5ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:33:04) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x23f8e1c>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (1296.1ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:33:10) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x2613698>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (82.2ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:34:22) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x250051c>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (95.5ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:34:23) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x241c128>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (350.8ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:34:24) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x264f670>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (102.6ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:34:24) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x255803c>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (207.7ms)
+Rendered rescues/_request_and_response (2.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:35:24) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x2499358>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (83.6ms)
+Rendered rescues/_request_and_response (4.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:39:56) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x23b0248>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (298.1ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:43:19) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x25ad0c8>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (97.2ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:43:21) [GET]
+
+NameError (undefined local variable or method `current_user' for #<MainpagesController:0x24ab2d8>):
+  app/controllers/mainpages_controller.rb:8:in `main'
+
+Rendered rescues/_trace (135.2ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:48:05) [GET]
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 242ms (View: 62, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 01:48:13) [GET]
+
+ActionController::UnknownAction (No action responded to play. Actions: create, destroy, edit, index, main, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:49:38) [GET]
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 55ms (View: 22, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-06 01:49:41) [GET]
+Redirected to http://localhost:3000/
+Completed in 26ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:49:41) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.password_confirmation=) on line #27 of app/views/mainpages/not_logged_in.html.erb:
+24: 
+25: <div id = "sign_up">
+26: 	Sign up as a new user
+27: 	<% @user.password = @user.password_confirmation = nil %>
+28: 
+29: 	<%= error_messages_for :user %>
+30: 	<% form_for :user, :url => users_path do |f| -%>
+
+    app/views/mainpages/not_logged_in.html.erb:27
+    app/controllers/mainpages_controller.rb:16:in `main'
+
+Rendered rescues/_trace (118.5ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:53:52) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.password_confirmation=) on line #27 of app/views/mainpages/not_logged_in.html.erb:
+24: 
+25: <div id = "sign_up">
+26: 	Sign up as a new user
+27: 	<% @user.password = @user.password_confirmation = nil %>
+28: 
+29: 	<%= error_messages_for :user %>
+30: 	<% form_for :user, :url => users_path do |f| -%>
+
+    app/views/mainpages/not_logged_in.html.erb:27
+    app/controllers/mainpages_controller.rb:16:in `main'
+
+Rendered rescues/_trace (330.6ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:55:04) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+ERROR: compiling _run_erb_app47views47mainpages47not_logged_in46html46erb RAISED compile error
+/Users/david/Projects/iwin/iwin/app/views/mainpages/not_logged_in.html.erb:6: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+...nder :controller => sessions :action => new ).to_s); @output...
+                              ^
+Function body:           def _run_erb_app47views47mainpages47not_logged_in46html46erb(local_assigns)
+            old_output_buffer = output_buffer;;@output_buffer = '';  __in_erb_template=true ; @output_buffer.concat "<h1 class=\"page_title\"> iWin </h1>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<div class = empty_clear_left></div>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<div id = \"log_in\">\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( render :controller => sessions :action => new ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "</div>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "<div id = \"sign_up\">\n"
+@output_buffer.concat "\tSign up as a new user\n"
+@output_buffer.concat "\t";  @user.password = @user.password_confirmation = nil ; @output_buffer.concat "\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( error_messages_for :user ).to_s); @output_buffer.concat "\n"
+@output_buffer.concat "\t";  form_for :user, :url => users_path do |f| 
+@output_buffer.concat "\t<p>"; @output_buffer.concat(( label_tag 'login' ).to_s); @output_buffer.concat "<br/>\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( f.text_field :login ).to_s); @output_buffer.concat "</p>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "\t<p>"; @output_buffer.concat(( label_tag 'email' ).to_s); @output_buffer.concat "<br/>\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( f.text_field :email ).to_s); @output_buffer.concat "</p>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "\t<p>"; @output_buffer.concat(( label_tag 'password' ).to_s); @output_buffer.concat "<br/>\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( f.password_field :password ).to_s); @output_buffer.concat "</p>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "\t<p>"; @output_buffer.concat(( label_tag 'password_confirmation', 'Confirm Password' ).to_s); @output_buffer.concat "<br/>\n"
+@output_buffer.concat "\t"; @output_buffer.concat(( f.password_field :password_confirmation ).to_s); @output_buffer.concat "</p>\n"
+@output_buffer.concat "\n"
+@output_buffer.concat "\t<p>"; @output_buffer.concat(( submit_tag 'Sign up' ).to_s); @output_buffer.concat "</p>\n"
+@output_buffer.concat "\t";  end 
+@output_buffer.concat "<form action=\"login\" method\n"
+@output_buffer
+          ensure
+            self.output_buffer = old_output_buffer
+          end
+Backtrace: /Users/david/Projects/iwin/iwin/app/views/mainpages/not_logged_in.html.erb:33:in `compile!'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:61:in `compile'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:28:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_view/template.rb:199:in `render_template'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:260:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:343:in `_render_with_layout'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:257:in `render'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1246:in `render_for_file'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:947:in `render_without_benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:51:in `render'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:51:in `render'
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:16:in `main'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1327:in `send'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1327:in `perform_action_without_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:617:in `call_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+/Library/Ruby/Gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/flash.rb:146:in `perform_action'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:527:in `send'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:527:in `process_without_filters'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:606:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:391:in `process'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:386:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/routing/route_set.rb:434:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:88:in `dispatch'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:111:in `_call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:82:in `initialize'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:9:in `cache'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:28:in `call'
+/Library/Ruby/Gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/params_parser.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/session/cookie_store.rb:93:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/reloader.rb:29:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/failsafe.rb:26:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+/Library/Ruby/Gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:106:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.3/lib/rails/rack/static.rb:31:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.3/lib/rails/rack/log_tailer.rb:17:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/chunked.rb:15:in `call'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:61:in `process'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+/Library/Ruby/Gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+/Library/Ruby/Gems/1.8/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:34:in `run'
+/Library/Ruby/Gems/1.8/gems/rails-2.3.3/lib/commands/server.rb:111
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+/Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+script/server:3
+
+ActionView::TemplateError (compile error
+/Users/david/Projects/iwin/iwin/app/views/mainpages/not_logged_in.html.erb:6: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+...nder :controller => sessions :action => new ).to_s); @output...
+                              ^) on line #6 of app/views/mainpages/not_logged_in.html.erb:
+3: <div class = empty_clear_left></div>
+4: 
+5: <div id = "log_in">
+6: 	<%= render :controller => sessions :action => new %>
+7: </div>
+8: 
+9: <div id = "sign_up">
+
+    app/views/mainpages/not_logged_in.html.erb:33:in `compile!'
+    app/controllers/mainpages_controller.rb:16:in `main'
+
+Rendered rescues/_trace (96.4ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:57:20) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+
+ActionView::TemplateError (Missing template mainpages/__new.erb in view path app/views) on line #6 of app/views/mainpages/not_logged_in.html.erb:
+3: <div class = empty_clear_left></div>
+4: 
+5: <div id = "log_in">
+6:   <%= render :partial => "_new" %>
+7: </div>
+8: 
+9: <div id = "sign_up">
+
+    app/views/mainpages/not_logged_in.html.erb:6
+    app/controllers/mainpages_controller.rb:16:in `main'
+
+Rendered rescues/_trace (344.6ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:57:34) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+
+ActionView::TemplateError (Missing template mainpages/_new.erb in view path app/views) on line #6 of app/views/mainpages/not_logged_in.html.erb:
+3: <div class = empty_clear_left></div>
+4: 
+5: <div id = "log_in">
+6:   <%= render :partial => "new" %>
+7: </div>
+8: 
+9: <div id = "sign_up">
+
+    app/views/mainpages/not_logged_in.html.erb:6
+    app/controllers/mainpages_controller.rb:16:in `main'
+
+Rendered rescues/_trace (103.9ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:58:01) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+Rendered mainpages/_new (4.9ms)
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.password_confirmation=) on line #11 of app/views/mainpages/not_logged_in.html.erb:
+8: 
+9: <div id = "sign_up">
+10: 	Sign up as a new user
+11: 	<% @user.password = @user.password_confirmation = nil %>
+12: 
+13: 	<%= error_messages_for :user %>
+14: 	<% form_for :user, :url => users_path do |f| -%>
+
+    app/views/mainpages/not_logged_in.html.erb:11
+    app/controllers/mainpages_controller.rb:16:in `main'
+
+Rendered rescues/_trace (334.1ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:59:07) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+Completed in 21ms (View: 12, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-06 01:59:13) [GET]
+Rendering sessions/new
+Completed in 51ms (View: 42, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-02-06 01:59:17) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"hMSNw3KfwornMkyekojoenlIbt/3zEnm8Sp4EupRJQg=", "login"=>"david", "password"=>"123456"}
+  [4;36;1mUser Load (21.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 151ms (DB: 22) | 302 Found [http://localhost/session]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:59:17) [GET]
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 42ms (View: 9, DB: 3) | 200 OK [http://localhost/]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 01:59:21) [GET]
+
+ActionController::UnknownAction (No action responded to play. Actions: create, destroy, edit, index, main, new, show, and update):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-06 01:59:24) [GET]
+Redirected to http://localhost:3000/
+Completed in 28ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 01:59:24) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+Completed in 10ms (View: 4 | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-06 01:59:27) [GET]
+Rendering sessions/new
+Completed in 18ms (View: 9, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-02-06 02:15:19) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"uatLAwNfkRhUpIktOVHL5YiRNPlO6R1/y8e4UXamYSU=", "login"=>"david", "password"=>"123456"}
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 86ms (DB: 1) | 302 Found [http://localhost/session]
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 02:15:20) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:111: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (108.8ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 02:15:37) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:25: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+     { render :action => 'win'
+               ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:27: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:112: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (83.9ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 02:15:52) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:25: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+     { render :action => 'win'
+               ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:27: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:112: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (83.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 02:15:54) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:25: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+     { render :action => 'win'
+               ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:27: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:112: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (329.1ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 02:16:10) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:24: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+      render :action => 'lose'
+              ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:25: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:29: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:114: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (97.5ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#main (for 127.0.0.1 at 2010-02-06 02:16:27) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:24: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+      render :action => 'lose'
+              ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:25: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:29: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:114: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (84.5ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 02:16:49) [GET]
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 41ms (View: 9, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:16:53) [GET]
+
+NameError (undefined local variable or method `already_pressed' for #<MainpagesController:0x2369b7c>):
+  app/controllers/mainpages_controller.rb:21:in `play'
+
+Rendered rescues/_trace (313.2ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:17:28) [GET]
+
+ActionView::MissingTemplate (Missing template mainpages/lose.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:25:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:19:35) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:25: syntax error, unexpected tSYMBEG, expecting kDO or '{' or '('
+      render :action => 'lose'
+              ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:115: syntax error, unexpected kEND, expecting $end):
+  
+
+Rendered rescues/_trace (67.3ms)
+Rendered rescues/_request_and_response (6.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 02:19:50) [GET]
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 43ms (View: 11, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:19:52) [GET]
+
+ActionView::MissingTemplate (Missing template mainpages/win.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:28:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:27:20) [GET]
+
+ActionView::MissingTemplate (Missing template mainpages/win.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:27:23) [GET]
+
+ActionView::MissingTemplate (Missing template mainpages/win.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:27:48) [GET]
+
+ActionView::MissingTemplate (Missing template mainpages/win.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:27:50) [GET]
+
+ActionView::MissingTemplate (Missing template mainpages/win.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:28:19) [GET]
+
+NameError (undefined local variable or method `win' for #<MainpagesController:0x23c62f0>):
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (75.0ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:28:51) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:128: syntax error, unexpected kEND, expecting $end):
+  
+
+Rendered rescues/_trace (305.4ms)
+Rendered rescues/_request_and_response (1.0ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:29:12) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:29: odd number list for Hash
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:30: syntax error, unexpected tIVAR, expecting '}'
+      @already_pressed = true}
+                      ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:30: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:128: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (85.6ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:29:44) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:29: odd number list for Hash
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:31: syntax error, unexpected tIVAR, expecting '}'
+      @already_pressed = true}
+                      ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:31: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:129: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (75.2ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:29:46) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:29: odd number list for Hash
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:31: syntax error, unexpected tIVAR, expecting '}'
+      @already_pressed = true}
+                      ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:31: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:129: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (372.9ms)
+Rendered rescues/_request_and_response (4.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:30:20) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:30: odd number list for Hash
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:31: syntax error, unexpected tIVAR, expecting '}'
+      @already_pressed = true
+                      ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:32: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:130: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (79.8ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:30:22) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:30: odd number list for Hash
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:31: syntax error, unexpected tIVAR, expecting '}'
+      @already_pressed = true
+                      ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:32: syntax error, unexpected '}', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:130: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (114.0ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:30:35) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:128: syntax error, unexpected kEND, expecting $end):
+  
+
+Rendered rescues/_trace (76.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:30:52) [GET]
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `wins' for #<User:0x2309c18>):
+  app/controllers/mainpages_controller.rb:35:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (317.1ms)
+Rendered rescues/_request_and_response (1.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:31:30) [GET]
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.+):
+  app/controllers/mainpages_controller.rb:35:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (81.0ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:32:09) [GET]
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+NoMethodError (You have a nil object when you didn't expect it!
+You might have expected an instance of Array.
+The error occurred while evaluating nil.+):
+  app/controllers/mainpages_controller.rb:35:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (82.9ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:32:24) [GET]
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `wins' for #<User:0x23153b0>):
+  app/controllers/mainpages_controller.rb:35:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (88.0ms)
+Rendered rescues/_request_and_response (1.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:33:35) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.wins):
+  app/controllers/mainpages_controller.rb:35:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (89.4ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#play (for 127.0.0.1 at 2010-02-06 02:34:41) [GET]
+
+SyntaxError (/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:13: syntax error, unexpected '>'
+...er.find(:first, :conditions -> {:id => session[:user_id]})
+                              ^
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:13: syntax error, unexpected ')', expecting kEND
+/Users/david/Projects/iwin/iwin/app/controllers/mainpages_controller.rb:128: syntax error, unexpected $end, expecting kEND):
+  
+
+Rendered rescues/_trace (75.7ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:34:50) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.wins):
+  app/controllers/mainpages_controller.rb:36:in `win'
+  app/controllers/mainpages_controller.rb:30:in `play'
+
+Rendered rescues/_trace (315.7ms)
+Rendered rescues/_request_and_response (6.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:35:13) [GET]
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+
+NoMethodError (undefined method `wins' for #<User:0x25d2094>):
+  app/controllers/mainpages_controller.rb:37:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendered rescues/_trace (81.9ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (1.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100204081834)
+Migrating to CreateMainpages (20100206081544)
+Migrating to AddWinsToUsers (20100206103741)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100204081834)
+Migrating to CreateMainpages (20100206081544)
+Migrating to AddWinsToUsers (20100206103741)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100204081834)
+Migrating to CreateMainpages (20100206081544)
+Migrating to AddWinsToUsers (20100206103741)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100204081834)
+Migrating to CreateMainpages (20100206081544)
+Migrating to AddWinsToUsers (20100206103741)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (60.3ms)[0m   [0mALTER TABLE "users" ADD "wins" integer[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mALTER TABLE "users" ADD "losses" integer[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100206103741')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("mainpages")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (87.0ms)[0m   [0mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "wins" integer, "losses" integer) [0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_index_altered_users_on_login" ON "altered_users" ("login")[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mDROP TABLE "users"[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "losses" integer) [0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_info('temp_index_altered_users_on_login')[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mDROP TABLE "altered_users"[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mCREATE TEMPORARY TABLE "altered_users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "losses" integer) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE UNIQUE INDEX "temp_index_altered_users_on_login" ON "altered_users" ("login")[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mDROP TABLE "users"[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0mPRAGMA index_list("altered_users")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mPRAGMA index_info('temp_index_altered_users_on_login')[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mDROP TABLE "altered_users"[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100206103741'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mPRAGMA index_list("mainpages")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100204081834)
+Migrating to CreateMainpages (20100206081544)
+Migrating to AddWinsToUsers (20100206103741)
+  [4;36;1mSQL (0.4ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (18.2ms)[0m   [0mALTER TABLE "users" ADD "wins" integer DEFAULT 0[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mALTER TABLE "users" ADD "losses" integer DEFAULT 0[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100206103741')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mPRAGMA index_list("mainpages")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mPRAGMA index_info('index_users_on_login')[0m
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:44:37) [GET]
+  [4;35;1mUser Load (2.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.3ms)[0m   [0;1mUPDATE "users" SET "wins" = 1, "updated_at" = '2010-02-06 10:44:37' WHERE "id" = 1[0m
+
+ActionView::MissingTemplate (Missing template mainpages/finished.erb in view path app/views):
+  app/controllers/mainpages_controller.rb:38:in `win'
+  app/controllers/mainpages_controller.rb:29:in `play'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:48:01) [GET]
+  [4;35;1mUser Load (10.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.2ms)[0m   [0;1mUPDATE "users" SET "wins" = 2, "updated_at" = '2010-02-06 10:48:01' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 95ms (View: 25, DB: 15) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:48:05) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 82ms (View: 64, DB: 2) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:48:06) [GET]
+  [4;35;1mUser Load (2.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.2ms)[0m   [0;1mUPDATE "users" SET "wins" = 3, "updated_at" = '2010-02-06 10:48:06' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 119ms (View: 9, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:48:32) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 46ms (View: 39, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:48:33) [GET]
+  [4;35;1mUser Load (1.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.4ms)[0m   [0;1mUPDATE "users" SET "wins" = 4, "updated_at" = '2010-02-06 10:48:33' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 109ms (View: 11, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:48:40) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 76ms (View: 65, DB: 2) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:48:41) [GET]
+  [4;35;1mUser Load (1.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.1ms)[0m   [0;1mUPDATE "users" SET "wins" = 5, "updated_at" = '2010-02-06 10:48:41' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 114ms (View: 17, DB: 5) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:48:45) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 54ms (View: 42, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:48:48) [GET]
+  [4;35;1mUser Load (2.9ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.4ms)[0m   [0;1mUPDATE "users" SET "wins" = 6, "updated_at" = '2010-02-06 10:48:48' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 111ms (View: 14, DB: 7) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:48:50) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 45ms (View: 38, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:52:03) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 79ms (View: 68, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:52:05) [GET]
+  [4;36;1mUser Load (2.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.2ms)[0m   [0mUPDATE "users" SET "wins" = 7, "updated_at" = '2010-02-06 10:52:05' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 336ms (View: 10, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:54:21) [GET]
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.2ms)[0m   [0;1mUPDATE "users" SET "losses" = 1, "updated_at" = '2010-02-06 10:54:22' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 98ms (View: 10, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:05) [GET]
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.2ms)[0m   [0mUPDATE "users" SET "losses" = 2, "updated_at" = '2010-02-06 10:59:05' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (2.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 231ms (View: 8, DB: 7) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:59:08) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 41ms (View: 34, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:09) [GET]
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "losses" = 3, "updated_at" = '2010-02-06 10:59:09' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 114ms (View: 14, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:59:12) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (3.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 66ms (View: 54, DB: 3) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:13) [GET]
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "losses" = 4, "updated_at" = '2010-02-06 10:59:13' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 199ms (View: 10, DB: 5) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:59:15) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 68ms (View: 57, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:16) [GET]
+  [4;36;1mUser Load (7.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.4ms)[0m   [0mUPDATE "users" SET "losses" = 5, "updated_at" = '2010-02-06 10:59:16' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 108ms (View: 10, DB: 11) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:59:18) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (5.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 54ms (View: 42, DB: 5) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:19) [GET]
+  [4;36;1mUser Load (3.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.8ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.8ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (51.3ms)[0m   [0mUPDATE "users" SET "losses" = 6, "updated_at" = '2010-02-06 10:59:19' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 191ms (View: 10, DB: 57) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:35) [GET]
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.6ms)[0m   [0;1mUPDATE "users" SET "losses" = 7, "updated_at" = '2010-02-06 10:59:36' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.6ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 131ms (View: 9, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:59:42) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 75ms (View: 64, DB: 2) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 02:59:44) [GET]
+  [4;35;1mUser Load (1.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.2ms)[0m   [0;1mUPDATE "users" SET "losses" = 8, "updated_at" = '2010-02-06 10:59:44' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 125ms (View: 9, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 02:59:46) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 41ms (View: 34, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2010-02-06 02:59:47) [GET]
+Redirected to http://localhost:3000/
+Completed in 26ms (DB: 0) | 302 Found [http://localhost/logout]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 02:59:47) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/not_logged_in
+Completed in 10ms (View: 4, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2010-02-06 02:59:49) [GET]
+Rendering sessions/new
+Completed in 16ms (View: 5, DB: 0) | 200 OK [http://localhost/login]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-02-06 02:59:53) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"X/+AiGN4vAiIwX6bR/558IxSCS/SuEQmq82c7pGpVd0=", "login"=>"david", "password"=>"theRaj1"}
+  [4;35;1mUser Load (1.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+Failed login for 'david' from 127.0.0.1 at Sat Feb 06 10:59:54 UTC 2010
+Rendering sessions/new
+Completed in 528ms (View: 5, DB: 2) | 200 OK [http://localhost/session]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-02-06 03:00:02) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"X/+AiGN4vAiIwX6bR/558IxSCS/SuEQmq82c7pGpVd0=", "login"=>"david", "password"=>"123456"}
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 46ms (DB: 1) | 302 Found [http://localhost/session]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 03:00:03) [GET]
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template mainpages/main.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 03:00:29) [GET]
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (1.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template mainpages/main.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2010-02-06 03:00:49) [POST]
+  Parameters: {"commit"=>"Log in", "authenticity_token"=>"X/+AiGN4vAiIwX6bR/558IxSCS/SuEQmq82c7pGpVd0=", "login"=>"david", "password"=>"123456"}
+  [4;35;1mUser Load (12.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'david') LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed in 155ms (DB: 12) | 302 Found [http://localhost/session]
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 03:00:49) [GET]
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+
+ActionView::MissingTemplate (Missing template mainpages/main.erb in view path app/views):
+  
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MainpagesController#main (for 127.0.0.1 at 2010-02-06 03:01:14) [GET]
+  [4;36;1mUser Load (1.2ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Completed in 77ms (View: 10, DB: 2) | 200 OK [http://localhost/]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:01:16) [GET]
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.9ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "losses" = 9, "updated_at" = '2010-02-06 11:01:16' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 110ms (View: 11, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:01:18) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 53ms (View: 36, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:01:19) [GET]
+  [4;36;1mUser Load (2.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.2ms)[0m   [0mUPDATE "users" SET "losses" = 10, "updated_at" = '2010-02-06 11:01:20' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 84ms (View: 17, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:04:01) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 57ms (View: 46, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:04:03) [GET]
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "losses" = 11, "updated_at" = '2010-02-06 11:04:03' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 110ms (View: 9, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:04:04) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 43ms (View: 36, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:14) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 94ms (View: 82, DB: 2) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:16) [GET]
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.7ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Update (1.1ms)[0m   [0;1mUPDATE "users" SET "wins" = 8, "updated_at" = '2010-02-06 11:06:16' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 207ms (View: 9, DB: 5) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:39) [GET]
+  [4;36;1mUser Load (2.0ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "losses" = 12, "updated_at" = '2010-02-06 11:06:39' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 362ms (View: 40, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:40) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 41ms (View: 34, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:42) [GET]
+  [4;36;1mUser Load (7.9ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.2ms)[0m   [0mUPDATE "users" SET "wins" = 9, "updated_at" = '2010-02-06 11:06:42' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (2.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 69ms (View: 9, DB: 13) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:44) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (2.0ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 78ms (View: 66, DB: 2) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:45) [GET]
+  [4;36;1mUser Load (10.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "wins" = 10, "updated_at" = '2010-02-06 11:06:45' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 230ms (View: 10, DB: 14) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:46) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 41ms (View: 35, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:48) [GET]
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.5ms)[0m   [0mUPDATE "users" SET "losses" = 13, "updated_at" = '2010-02-06 11:06:48' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 105ms (View: 9, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:49) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 47ms (View: 41, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:51) [GET]
+  [4;36;1mUser Load (2.1ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.1ms)[0m   [0mUPDATE "users" SET "losses" = 14, "updated_at" = '2010-02-06 11:06:51' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 195ms (View: 10, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:52) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 80ms (View: 74, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:53) [GET]
+  [4;36;1mUser Load (1.8ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.4ms)[0m   [0mUPDATE "users" SET "losses" = 15, "updated_at" = '2010-02-06 11:06:53' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.3ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 111ms (View: 10, DB: 6) | 200 OK [http://localhost/play]
+
+
+Processing MainpagesController#ready (for 127.0.0.1 at 2010-02-06 03:06:55) [GET]
+Rendering template within layouts/mainpages
+Rendering mainpages/ready
+  [4;35;1mUser Load (1.3ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 50ms (View: 42, DB: 1) | 200 OK [http://localhost/ready]
+
+
+Processing MainpagesController#play (for 127.0.0.1 at 2010-02-06 03:06:56) [GET]
+  [4;36;1mUser Load (2.6ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."login" = 'david' AND "users".id <> 1) LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email" = 'test@example.com' AND "users".id <> 1) LIMIT 1[0m
+  [4;35;1mUser Update (1.3ms)[0m   [0mUPDATE "users" SET "wins" = 11, "updated_at" = '2010-02-06 11:06:56' WHERE "id" = 1[0m
+Rendering template within layouts/mainpages
+Rendering mainpages/finished
+  [4;36;1mUser Load (1.7ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Completed in 106ms (View: 9, DB: 7) | 200 OK [http://localhost/play]
